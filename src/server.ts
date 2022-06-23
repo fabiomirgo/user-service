@@ -1,3 +1,4 @@
 import { App } from './app';
+import { PORT } from './constants/server';
 
-new App().server.listen(7777, () => console.log('Listening on port 7777'));
+new App().server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
