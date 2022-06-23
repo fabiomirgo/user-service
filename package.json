@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prettier-format": "prettier --config .prettierrc.json 'src/**/*.ts' --write",
     "test": "jest"
   },
   "keywords": [],
