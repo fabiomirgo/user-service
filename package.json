@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prettier-format": "prettier --config .prettierrc.json 'src/**/*.ts' --write",
+    "start": "nodemon",
     "test": "jest"
   },
   "keywords": [],
