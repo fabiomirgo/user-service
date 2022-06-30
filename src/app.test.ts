@@ -14,6 +14,7 @@ import { App } from './app';
 jest.mock('express', () => () => expressMock);
 jest.mock('body-parser', () => bodyParserMock);
 jest.mock('cors', () => corsMock);
+jest.mock('./controller/user-controller');
 
 describe('App tests', () => {
   test('should create and call setConfig method properly', () => {
@@ -21,7 +22,7 @@ describe('App tests', () => {
     new App();
 
     // assert
-    expect(expressMock.use).toBeCalledTimes(3);
+    expect(expressMock.use).toBeCalledTimes(4);
     expect(expressMock.use).toHaveBeenNthCalledWith(1, JSON_MOCK);
     expect(expressMock.use).toHaveBeenNthCalledWith(2, URL_ENCODED_MOCK);
     expect(expressMock.use).toHaveBeenNthCalledWith(3, CORS_RETURN_MOCK);
