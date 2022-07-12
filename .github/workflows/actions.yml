@@ -1,0 +1,48 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  check-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: 'America/Sao_Paulo'
+
+      - uses: actions/checkout@v2
+
+      - name: Set up node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.4.0
+
+      - run: npm ci --legacy-peer-deps
+      - run: npm run lint
+
+      - name: Cancel workflow
+        if: failure()
+        uses: andymckay/cancel-action@0.2
+
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: 'America/Sao_Paulo'
+
+      - uses: actions/checkout@v2
+
+      - name: Set up node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.4.0
+
+      - run: npm ci --legacy-peer-deps
+      - run: npm test
+
+      - name: Cancel workflow
+        if: failure()
+        uses: andymckay/cancel-action@0.2

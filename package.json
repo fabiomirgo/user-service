@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint --ext .ts src/",
     "prettier-format": "prettier --config .prettierrc.json 'src/**/*.ts' --write",
     "start": "nodemon",
     "test": "jest"
